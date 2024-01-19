@@ -10,6 +10,8 @@
 # 9. Site navigation
 
 # 1. Files excluded from Jekyll builds
+remote_theme: daviddarnes/alembic@main
+
 exclude:
 - README.md
 - CODE_OF_CONDUCT.md
@@ -33,6 +35,7 @@ plugins:
 - jekyll-commonmark
 - jekyll-include-cache
 - jemoji
+- jekyll-remote-theme
 
 # 3. Gem settings
 paginate: 2 # jekyll-paginate > items per page
