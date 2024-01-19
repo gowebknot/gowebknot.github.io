@@ -129,10 +129,12 @@ navigation_header:
   url: /
 - title: Blog
   url: /blog/
+- title: Level Up
+  url: /levelup/
 
 navigation_footer:
-- title: Created by David Darnes
-  url: https://darn.es
+- title: Created with Jekyll
+  url: https://webknot.in
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
   Twitter: https://twitter.com/DavidDarnes
