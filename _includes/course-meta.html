@@ -1,12 +1,12 @@
-{% if page.tracks %}
-  {% capture tracks %}
-    {% for track in page.tracks %}
-      <span class="label  label--category"><a href="{{ site.baseurl }}/tracks/#{{ track | downcase | slugify }}">{{ track }}</a></span>{% if forloop.last == false %},{% endif %}
+{% if page.categories %}
+  {% capture categories %}
+    {% for category in page.categories %}
+      <span class="label  label--category"><a href="{{ site.baseurl }}/categories/#{{ category | downcase | slugify }}">{{ category }}</a></span>{% if forloop.last == false %},{% endif %}
     {% endfor %}
   {% endcapture %}
-{% elsif page.track %}
-  {% capture tracks %}
-    <span class="label  label--category"><a href="{{ site.baseurl }}/tracks/#{{ page.track | downcase | slugify }}">{{ page.track }}</a></span>
+{% elsif page.category %}
+  {% capture categories %}
+    <span class="label  label--category"><a href="{{ site.baseurl }}/categories/#{{ page.category | downcase | slugify }}">{{ page.category }}</a></span>
   {% endcapture %}
 {% endif %}
 
