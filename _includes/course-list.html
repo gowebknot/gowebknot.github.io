@@ -1,25 +1,6 @@
-{% for page in site.courses %}
-  {% for categories in site.categories %}
-    {% assign category_name = category | first %}
-    <section class="section  typeset">
-      <h2 id="{{ track_name | slugify }}">{{ category_name }}</h2>
-      <ul class="list  list--posts">
-          {% assign has_tracks = true %}
-          <li class="item  item--post">
-            <article class="article  article--post  typeset">
-              <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
-              {% include course-meta.html %}
-              {{ page.excerpt | truncatewords: 60 | markdownify }}
-            </article>
-          </li>
-      </ul>
-      {% unless forloop.last %}<hr/>{% endunless %}
-    </section>
-  {% endfor %}  
+{% for project in site.courses %}
+    <li>
+      <a href="{{ project.url }}">{{ project.title }}</a>
+      <p>{{ project.description }}</p>
+    </li>
 {% endfor %}
-
-{% if has_tracks != true %}
-  <section class="section  typeset">
-    <p>There are no courses</p>
-  </section>
-{% endif %}
