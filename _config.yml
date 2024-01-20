@@ -97,6 +97,12 @@ defaults:
   -
     scope:
       path: ""
+      type: "courses"
+    values:
+      layout: post # Set the default layout for posts
+  -
+    scope:
+      path: ""
       type: "pages"
     values:
       layout: page # Set the default layout for pages
