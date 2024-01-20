@@ -1,0 +1,16 @@
+{% if page.tracks %}
+  {% capture tracks %}
+    {% for track in page.tracks %}
+      <span class="label  label--category"><a href="{{ site.baseurl }}/tracks/#{{ track | downcase | slugify }}">{{ track }}</a></span>{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  {% endcapture %}
+{% elsif page.track %}
+  {% capture tracks %}
+    <span class="label  label--category"><a href="{{ site.baseurl }}/tracks/#{{ page.track | downcase | slugify }}">{{ page.track }}</a></span>
+  {% endcapture %}
+{% endif %}
+
+<small class="small  post-meta">
+  {% assign date_format = site.date_format | default: "%d %b %Y" %}
+  {{ tracks | append: "&nbsp;&middot;&nbsp;" }}<time datetime="{{ page.date | date_to_xmlschema }}" class="time">{{ page.date | date: date_format }}</time>
+</small>
