@@ -1,7 +1,12 @@
 ---
 title: Fundamentals of Java
 feature_image: "https://picsum.photos/2560/600?image=872"
-excerpt: Get Started with Java.  This course will help you get started with the basics of Java, help you with practical assignements and take you to the next level.
+excerpt: |
+  ### Get Started with Java
+  This course will help you get started with the basics of Java, help you with practical assignements and take you to the next level.
+feature_text: |
+  ## Java Fundamentals
+  
 
 ---
 <!-- more -->
@@ -54,7 +59,7 @@ excerpt: Get Started with Java.  This course will help you get started with the 
     * Use a json file to import products into your store. All product information should be in a json and this needs to be imported.
     * Use Serializers/Deserializers to do the same. Hint: Use jackson object mapper dependencies to achieve the same
 
-## Understand Advanced Java - before you jump into Spring Boot
+## Understand Advanced Java Concepts
 Following are topics that you want to brush about Java
 
 * Collections and Generics - [https://www.youtube.com/watch?v=HhrQqmp3hXI](https://www.youtube.com/watch?v=HhrQqmp3hXI)

@@ -2,7 +2,11 @@
 title: Java - Spring Boot
 categories:
 feature_image: "https://picsum.photos/2560/600?image=872"
-excerpt: Java - Spring Boot Training Track - Lesson 1 - This course will help you learn the basics of Java - Spring Boot, and the assignements will help you build a simple application with Sprin Boot, write REST API's and cover other features of a simple Spring Boot App.
+excerpt: |
+  ### Java - Spring Boot Training Track - Lesson 1
+  This course will help you learn the basics of Java - Spring Boot, and the assignements will help you build a simple application with Sprin Boot, write REST API's and cover other features of a simple Spring Boot App.
+feature_text: |
+  ## Spring Boot
 ---
 
 <!-- more -->
@@ -24,16 +28,12 @@ Do try to understand them - No particular article - Just Research.
 
 ## Understanding important core concepts of Spring / Spring Boot
 * Spring IOC and Dependency Injection Reference - [https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
-* Spring Boot Annotations
-    * This could be a good starting point - [https://springframework.guru/spring-framework-annotations/](https://springframework.guru/spring-framework-annotations/)
-* Spring JPA
-    * [https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa](https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
-* Spring Data Repositories
-    * [https://www.baeldung.com/spring-data-repositories](https://www.baeldung.com/spring-data-repositories)
-* Spring Boot with Hibernate
-    * [https://www.baeldung.com/spring-boot-hibernate](https://www.baeldung.com/spring-boot-hibernate)
-* Spring Boot Security
-    * [https://www.baeldung.com/spring-boot-security-autoconfiguration](https://www.baeldung.com/spring-boot-security-autoconfiguration)
+* Spring Boot Annotations.
+ This could be a good starting point - [https://springframework.guru/spring-framework-annotations/](https://springframework.guru/spring-framework-annotations/)
+* Spring JPA - [https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa](https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
+* Spring Data Repositories - [https://www.baeldung.com/spring-data-repositories](https://www.baeldung.com/spring-data-repositories)
+* Spring Boot with Hibernate - [https://www.baeldung.com/spring-boot-hibernate](https://www.baeldung.com/spring-boot-hibernate)
+* Spring Boot Security - [https://www.baeldung.com/spring-boot-security-autoconfiguration](https://www.baeldung.com/spring-boot-security-autoconfiguration)
 
 Learn the above with examples and try it out.
 
