@@ -1,9 +1,10 @@
 ---
 layout: blog
-collectionpage: posts
+title: By Name
+permalink: /blog/tech/
 pagination: 
   enabled: true
-  category: blogs
+  category: tech-posts
   permalink: /:num/
   sort_field: 'title'
   sort_reverse: false

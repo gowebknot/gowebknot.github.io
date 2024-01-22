@@ -1,9 +1,10 @@
 ---
 layout: blog
-collectionpage: posts
+title: By Name
+permalink: /blog/process/
 pagination: 
   enabled: true
-  category: blogs
+  category: process-posts
   permalink: /:num/
   sort_field: 'title'
   sort_reverse: false

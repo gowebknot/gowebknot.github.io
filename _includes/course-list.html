@@ -1,6 +1,34 @@
-{% for project in site.courses %}
-    <li>
-      <a href="{{ project.url }}">{{ project.title }}</a>
-      <p>{{ project.description }}</p>
-    </li>
-{% endfor %}
+{% if paginator.courses %}
+  <section class="section  typeset">
+    <ul class="list  list--posts">
+      {% for page in paginator.courses %}
+        <li class="item  item--post">
+          <article class="article  article--post">
+
+            <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
+            <!-- {% include course-meta.html %} -->
+            {{ page.excerpt | markdownify | truncatewords: 60 }}
+
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+    {% include post-pagination.html %}
+  </section>
+{% else %}
+  <section class="section  typeset">
+    <ul class="list  list--posts">
+      {% for page in site.courses %}
+        <li class="item  item--post">
+          <article class="article  article--post">
+
+            <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
+            <!-- {% include course-meta.html %} -->
+            {{ page.excerpt | markdownify | truncatewords: 60 }}
+
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
