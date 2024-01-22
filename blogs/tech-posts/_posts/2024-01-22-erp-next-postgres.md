@@ -5,6 +5,7 @@ excerpt: |
   ## ERPNext Integration with Postgres
   This blog will teach you how to connect your ERP Next with Postgres, both Local and Production.
 feature_image: https://cdn-images-1.medium.com/max/8192/1*RZ1ChkUhqJqxyqB2Yw4YaA@2x.jpeg
+author: Sabyasachi Seal
 ---
 Frappe has done an amazing job building ERPNext, but for some reason it just doesn’t integrate well with Postgres.
 
