@@ -10,7 +10,7 @@
 # 9. Site navigation
 
 # 1. Files excluded from Jekyll builds
-remote_theme: daviddarnes/alembic@main
+# remote_theme: daviddarnes/alembic@main
 
 exclude:
 - README.md
@@ -35,7 +35,7 @@ plugins:
 - jekyll-commonmark
 - jekyll-include-cache
 - jemoji
-- jekyll-remote-theme
+# - jekyll-remote-theme
 
 # 3. Gem settings
 pagination:
@@ -79,13 +79,6 @@ collections:
     feature_text: |
       Welcome to the blog
     feature_image: "https://picsum.photos/2560/600?image=866"
-  courses:
-    title: Courses
-    output: true
-    description: "My thoughts and ideas" # The post list page content
-    feature_text: |
-      Welcome to the Course
-    feature_image: "https://picsum.photos/2560/600?image=866"
 
 # 6. Jekyll collections settings
 defaults:
@@ -98,12 +91,6 @@ defaults:
     scope:
       path: ""
       type: "posts"
-    values:
-      layout: post # Set the default layout for posts
-  -
-    scope:
-      path: ""
-      type: "courses"
     values:
       layout: post # Set the default layout for posts
   -
