@@ -10,7 +10,23 @@ layout: default
 
     <article class="article  article--page  typeset">
 
-      {% if paginator.courses %}
+      <h1> All Level Up Tracks</h1>
+
+      <h2 id="Java"><a href="{{ site.baseurl }}/java/">Java</a></h2>
+      
+
+      <!-- {% for page in site.categories["java"] %}
+          <li class="item  item--post">
+            <article class="article  article--post  typeset">
+              <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
+              {% include post-meta.html %}
+              {{ page.excerpt | truncatewords: 60 | markdownify }}
+            </article>
+          </li>
+        {% endfor %} -->
+
+
+      <!-- {% if paginator.courses %}
         {% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
         <h1>{{ collectiondata.title }}</h1>
         {{ collectiondata.description | markdownify }}
@@ -19,7 +35,7 @@ layout: default
         <h1>{{ page.title }}</h1>
         {{ content }}
         
-      {% endif %}
+      {% endif %} -->
 
     </article>
 
