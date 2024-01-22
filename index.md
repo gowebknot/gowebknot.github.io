@@ -11,4 +11,4 @@ This is a space for learning and sharing tech knowledge for folks in [WebKnot](h
 
 {% include site-search.html %}
 
-{% include nav-footer.html %}
+<!-- {% include nav-footer.html %} -->
