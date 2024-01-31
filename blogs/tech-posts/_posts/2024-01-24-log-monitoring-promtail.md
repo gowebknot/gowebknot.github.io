@@ -1,6 +1,11 @@
-**Application Log Monitoring Set Up using Grafana Loki and Promtail**
-
+---
+title: Application Log Monitoring Set Up using Grafana Loki and Promtail
+feature_text: Effortless Log Monitoring
+excerpt: |
+  ## Effortless Log Monitoring
 Effective log monitoring is pivotal for ensuring the stability and optimal performance of applications. In this comprehensive guide, we will walk through the meticulous process of establishing a robust application log monitoring infrastructure utilising Grafana Loki and Promtail. Our deployment involves two distinct servers: one housing Grafana Loki, and the other hosting a Dockerized application with Promtail installed.
+feature_image: "https://github.com/gowebknot/gowebknot.github.io/blob/article/log-monitoring/uploads/image.jpg?raw=true"
+---
 
 **Architecture:**
 
