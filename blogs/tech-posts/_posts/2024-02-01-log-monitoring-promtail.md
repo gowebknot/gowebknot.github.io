@@ -3,9 +3,12 @@ title: Application Log Monitoring Set Up using Grafana Loki and Promtail
 feature_text: Effortless Log Monitoring
 excerpt: |
   ## Effortless Log Monitoring
-Effective log monitoring is pivotal for ensuring the stability and optimal performance of applications. In this comprehensive guide, we will walk through the meticulous process of establishing a robust application log monitoring infrastructure utilising Grafana Loki and Promtail. Our deployment involves two distinct servers: one housing Grafana Loki, and the other hosting a Dockerized application with Promtail installed.
+   Effective log monitoring is pivotal for ensuring the stability and optimal performance of applications. In this comprehensive guide, we will walk through the meticulous process of establishing a robust application log monitoring infrastructure utilising Grafana Loki and Promtail. 
 feature_image: "https://github.com/gowebknot/gowebknot.github.io/blob/article/log-monitoring/uploads/image.jpg?raw=true"
 ---
+
+Our deployment involves two distinct servers: one housing Grafana Loki, and the other hosting a Dockerized application with Promtail installed.
+<!-- more -->
 
 **Architecture:**
 
@@ -50,81 +53,57 @@ feature_image: "https://github.com/gowebknot/gowebknot.github.io/blob/article/lo
 
 **Copy and paste the following into the loki.service file:**
 
-**[Unit]**
+```
+[Unit]
+Description=Loki service After=network.target
+[Service]
+Type=simple
+User=loki
+ExecStart=/usr/bin/loki -config.file /etc/loki/config.yml
+```
 
-**Description=Loki service After=network.target**
+Give a reasonable amount of time for the server to start up/shut down TimeoutSec=120 Restart=on-failure
 
-**[Service]**
+```
+RestartSec=2
+[Install] WantedBy=multi-user.target
+```
 
-**Type=simple**
-
-**User=loki**
-
-**ExecStart=/usr/bin/loki -config.file /etc/loki/config.yml**
-
-**# Give a reasonable amount of time for the server to start up/shut down TimeoutSec=120 Restart=on-failure**
-
-**RestartSec=2**
-
-**[Install] WantedBy=multi-user.target**
-
-6. **Configure Loki**
+6. Configure Loki**
 
    sudo nano /etc/loki/config.yml
 
 **Copy and paste the following configuration into the config.yml file: auth\_enabled: false**
 
-**server:**
+```
+server:
+http\_listen\_port: 3100
+ingester:
+lifecycler:
+address: 127.0.0.1
+ring:
+kvstore:
+store: inmemory replication\_factor: 1 final\_sleep: 0s
+chunk\_idle\_period: 5m chunk\_retain\_period: 30s max\_transfer\_retries: 0
+schema\_config:
+configs:
+   - from: 2018-04-15 store: boltdb object\_store: filesystem schema: v11
+index:
+prefix: index\_
+period: 168h
+storage\_config:
+boltdb:
+directory: /tmp/loki/index
+filesystem:
+directory: /tmp/loki/chunks
+limits\_config:
+enforce\_metric\_name: false reject\_old\_samples: true reject\_old\_samples\_max\_age: 168h
+chunk\_store\_config:
+max\_look\_back\_period: 0s
+table\_manager:
+retention\_deletes\_enabled: false retention\_period: 0s
+```
 
-**http\_listen\_port: 3100**
-
-**ingester:**
-
-**lifecycler:**
-
-**address: 127.0.0.1**
-
-**ring:**
-
-**kvstore:**
-
-**store: inmemory replication\_factor: 1 final\_sleep: 0s**
-
-**chunk\_idle\_period: 5m chunk\_retain\_period: 30s max\_transfer\_retries: 0**
-
-**schema\_config:**
-
-**configs:**
-
-- **from: 2018-04-15 store: boltdb object\_store: filesystem schema: v11**
-
-  **index:**
-
-**prefix: index\_**
-
-**period: 168h**
-
-**storage\_config:**
-
-**boltdb:**
-
-**directory: /tmp/loki/index**
-
-**filesystem:**
-
-**directory: /tmp/loki/chunks**
-
-**limits\_config:**
-
-**enforce\_metric\_name: false reject\_old\_samples: true reject\_old\_samples\_max\_age: 168h**
-
-**chunk\_store\_config:**
-
-**max\_look\_back\_period: 0s**
-
-**table\_manager:**
-
-**retention\_deletes\_enabled: false retention\_period: 0s**
 
 7. **Start Loki Service** sudo systemctl start loki
 
@@ -145,11 +124,11 @@ wget [https://github.com/grafana/loki/releases/download/v2.8.2/promtail-linux-am
 
   unzip promtail-linux-amd64.zip
 
-- **Move the Binary to a Suitable Location:**
-1. **Place the Promtail binary in an appropriate directory:** sudo mv promtail-linux-amd64 /usr/local/bin/promtail
-1. **Establish a directory and configuration file for Promtail:** sudo mkdir -p /etc/promtail
-1. **Create a Configuration File for Promtail:** sudo nano /etc/promtail/promtail.yaml
-1. **Populate the configuration file (promtail.yaml) with the necessary parameters: server:**
+- Move the Binary to a Suitable Location:
+1. Place the Promtail binary in an appropriate directory: sudo mv promtail-linux-amd64 /usr/local/bin/promtail
+1. Establish a directory and configuration file for Promtail: sudo mkdir -p /etc/promtail
+1. Create a Configuration File for Promtail: sudo nano /etc/promtail/promtail.yaml
+1. Populate the configuration file (promtail.yaml) with the necessary parameters: server:
 
 **http\_listen\_port: 9080**
 
@@ -159,30 +138,28 @@ wget [https://github.com/grafana/loki/releases/download/v2.8.2/promtail-linux-am
 
 **scrape\_configs:**
 
-- **job\_name: system static\_configs:**
-  - **targets:**
-    - **localhost**
+- job\_name: system static\_configs:
+  - targets:
+    - localhost
 5. **Configure Promtail as a Service:**
 
-   **Develop a systemd service file for Promtail:** sudo vim /etc/systemd/system/promtail.service
+   Develop a systemd service file for Promtail: sudo vim /etc/systemd/system/promtail.service
 
-**Insert the following content into the service file:**
+Insert the following content into the service file:
 
-**[Unit]**
+```
+[Unit]
+Description=Promtail service After=network.target
+[Service]
+User=root
+ExecStart=/usr/local/bin/promtail -config.file=/etc/promtail/promtail.yaml
+[Install] WantedBy=multi-user.target
+```
 
-**Description=Promtail service After=network.target**
-
-**[Service]**
-
-**User=root**
-
-**ExecStart=/usr/local/bin/promtail -config.file=/etc/promtail/promtail.yaml**
-
-**[Install] WantedBy=multi-user.target**
 
 6. **Start and Enable Promtail:**
 
-   **Initiate the Promtail service and set it to launch automatically during boot:**
+   Initiate the Promtail service and set it to launch automatically during boot:
 
 sudo systemctl start promtail sudo systemctl enable promtail
 
@@ -207,24 +184,18 @@ sudo systemctl start promtail sudo systemctl enable promtail
 
 **Visualizations:**
 
-- **Edit the promtail-config.yml file:**
-
-  **scrape\_configs:**
-
-- **job\_name: docker-logs**
-
-**static\_configs:**
-
-- **targets:**
-  - **localhost**
-
-**labels:**
-
-**job: my-container**
-
-**host: localhost**
-
-**\_\_path\_\_: /var/lib/docker/containers/container\_id/container\_id.log**
+**Edit the promtail-config.yml file:**
+```
+scrape\_configs:
+- job\_name: docker-logs
+static\_configs:
+- targets:
+  - localhost
+labels:
+job: my-container
+host: localhost
+\_\_path\_\_: /var/lib/docker/containers/container\_id/container\_id.log
+```
 
 - Click on this button (top-right) to create a new panel in the same dashboard and then, click on **“Add New Panel”**
 - Add
