@@ -5,6 +5,7 @@ excerpt: |
   ## Effortless Log Monitoring
    Effective log monitoring is pivotal for ensuring the stability and optimal performance of applications. In this comprehensive guide, we will walk through the meticulous process of establishing a robust application log monitoring infrastructure utilising Grafana Loki and Promtail. 
 feature_image: "https://github.com/gowebknot/gowebknot.github.io/blob/article/log-monitoring/uploads/image.jpg?raw=true"
+author: Nidhi Baldia
 ---
 
 Our deployment involves two distinct servers: one housing Grafana Loki, and the other hosting a Dockerized application with Promtail installed.
@@ -17,39 +18,57 @@ Our deployment involves two distinct servers: one housing Grafana Loki, and the 
 **Installing Grafana**
 
 1. **Setting up the prerequisites**
+```
 - sudo apt-get install -y apt-transport-https
 - sudo apt-get install -y software-properties-common wget
 - wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+```
 2. **Adding the repository to grafana**
+```
 - echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 - sudo apt-get update
+```
 3. **Installing grafana**
-- sudo apt-get install grafana
+``` 
+sudo apt-get install grafana 
+```
 4. **Verify the installation**
-- grafana-server -version
+```
+grafana-server -version
+```
 5. **Access the Loki** http://<host>:3000
 
 **Installing Grafana Loki**
 
 1. **Update and Upgrade System Packages** sudo apt-get update
 
+   ```
    sudo apt-get upgrade
+   ```
 
 2. **Create Keyring Directory and Add Grafana GPG Key** mkdir -p /etc/apt/keyrings/
 
+   ```
    wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor > /etc/apt/keyrings/grafana.gpg
+   ```
 
 3. **Add Grafana Repository**
 
+   ```
    echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | tee /etc/apt/sources.list.d/grafana.list
+   ```
 
 4. **Install Loki**
 
+   ```
    sudo apt-get install loki
+   ```
 
 5. **Create Loki systemd Service** cd /etc/systemd/system/
 
+   ```
    sudo nano loki.service
+   ```
 
 **Copy and paste the following into the loki.service file:**
 
@@ -71,7 +90,7 @@ RestartSec=2
 
 6. Configure Loki**
 
-   sudo nano /etc/loki/config.yml
+   ```sudo nano /etc/loki/config.yml```
 
 **Copy and paste the following configuration into the config.yml file: auth\_enabled: false**
 
@@ -130,17 +149,16 @@ wget [https://github.com/grafana/loki/releases/download/v2.8.2/promtail-linux-am
 1. Create a Configuration File for Promtail: sudo nano /etc/promtail/promtail.yaml
 1. Populate the configuration file (promtail.yaml) with the necessary parameters: server:
 
-**http\_listen\_port: 9080**
+```
+http\_listen\_port: 9080
+clients:
+   url: http://localhost:3100/loki/api/v1/push**
+scrape\_configs:
+   job\_name: system static\_configs:
+      targets:
+         localhost
+```
 
-**clients:**
-
-- **url: http://localhost:3100/loki/api/v1/push**
-
-**scrape\_configs:**
-
-- job\_name: system static\_configs:
-  - targets:
-    - localhost
 5. **Configure Promtail as a Service:**
 
    Develop a systemd service file for Promtail: sudo vim /etc/systemd/system/promtail.service
@@ -194,7 +212,7 @@ static\_configs:
 labels:
 job: my-container
 host: localhost
-\_\_path\_\_: /var/lib/docker/containers/container\_id/container\_id.log
+path: /var/lib/docker/containers/container\_id/container\_id.log
 ```
 
 - Click on this button (top-right) to create a new panel in the same dashboard and then, click on **“Add New Panel”**
