@@ -62,4 +62,4 @@ feature_text: |
 [Resourse Link](https://youtu.be/v7DKtAluvYA?feature=shared)
 
 #### Week 2 Assignment 
-[Resource Link](https://docs.google.com/document/d/11wZ0X2AryTioB5hp0kgJDEfblBdfF8ceh2i2ENISunQ/edit?usp=sharing)
+<object data="/uploads/golang-data/Golang-Week2-Assignment.pdf" width="1000" height="1000" type='application/pdf'></object>
