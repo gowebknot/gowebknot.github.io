@@ -45,4 +45,4 @@ feature_text: |
 
 
 ## Week 3 Assignment
-Comming soon
+<object data="/uploads/golang-data/Golang-Week3-Assignment.pdf" width="1000" height="1000" type='application/pdf'></object>
