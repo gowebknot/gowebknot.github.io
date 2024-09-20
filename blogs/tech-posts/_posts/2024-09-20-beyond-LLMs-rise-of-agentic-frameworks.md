@@ -1,7 +1,7 @@
 ---
 title: "Beyond LLMs: The Rise of Agentic Paradigms in AI"
 author: "Swaroop Shivakumar"
-feature_image: "/assets/images/agentic_ai_cover.jpg"
+feature_image: "/uploads/ai_pastel.jpg"
 feature_text: "Exploring the rise of autonomous AI agents beyond traditional LLM capabilities."
 ---
 
