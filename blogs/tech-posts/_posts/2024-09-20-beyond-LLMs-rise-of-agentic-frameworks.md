@@ -1,13 +1,3 @@
----
-title: Beyond LLMs: The Rise of Agentic Paradigms in AI
-feature_text: A New Era in AI
-excerpt: |
-  ## A New Era in AI
-  While Large Language Models (LLMs) like GPT-4 have transformed how we interact with AI, they come with limitations. In this blog, we explore the emerging agentic paradigms that bring autonomy, multi-step reasoning, and real-time decision-making, shaping the next generation of AI systems.
-feature_image: "https://example.com/path-to-your-image.jpg"
-author: Swaroop Shivakumar
----
-
 # Beyond LLMs: The Rise of Agentic Paradigms in AI
 
 Artificial Intelligence (AI) has come a long way with the development of Large Language Models (LLMs), such as GPT-4, which are capable of generating human-like responses and performing a wide range of text-based tasks. However, as powerful as LLMs are, they have inherent limitations. To address these limitations, we are seeing the rise of agentic paradigms, where AI models can autonomously act, make decisions, and interface with complex systems.
