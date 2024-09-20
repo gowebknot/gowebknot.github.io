@@ -5,8 +5,6 @@ feature_image: "/uploads/ai_pastel.jpg"
 feature_text: "Exploring the rise of autonomous AI agents beyond traditional LLM capabilities."
 ---
 
-# Beyond LLMs: The Rise of Agentic Paradigms in AI
-
 Artificial Intelligence (AI) has come a long way with the development of Large Language Models (LLMs), such as GPT-4, which are capable of generating human-like responses and performing a wide range of text-based tasks. However, as powerful as LLMs are, they have inherent limitations. To address these limitations, we are seeing the rise of agentic paradigms, where AI models can autonomously act, make decisions, and interface with complex systems.
 
 In this blog post, we'll explore the limitations of LLM instances, what agents are and how they surpass those limitations, the different agentic frameworks available, and where these agents can have a significant impact.
